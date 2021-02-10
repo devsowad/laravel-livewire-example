@@ -1,0 +1,81 @@
+@import "./common.css";
+
+:root {
+    /* ========= Font Size */
+    --biggest-font-size: 2.5rem;
+    --bigger-font-size: 1.8rem;
+    --big-font-size: 1.5rem;
+    --small-font-size: 1.2rem;
+    --smaller-font-size: 1rem;
+
+    /*========== Colors ==========*/
+    --first-color: #f70c9dff;
+    --first-color-alt: #de0b8d;
+    --first-color-opposite: #ffff;
+
+    --second-color: #0f1a20ff;
+    --second-color-alt: #182a33;
+    --second-color-opposite: #ffff;
+
+    --title-color: #0f1a20ff;
+    --text-color: #182a33;
+    --body-color: #f6f8f8;
+    --container-color: #f7f6f6;
+
+    --transition: all 0.3s ease-in-out;
+}
+
+::selection {
+    background: var(--first-color);
+    color: var(--first-color-opposite);
+}
+
+@media screen and (max-width: 425px) {
+    :root {
+        --biggest-font-size: 1.7rem;
+        --bigger-font-size: 1.2rem;
+        --big-font-size: 1rem;
+        --small-font-size: 0.9rem;
+        --smaller-font-size: 0.8rem;
+    }
+}
+@media (max-width: 768px) and (min-width: 425px) {
+    :root {
+        --biggest-font-size: 2rem;
+        --bigger-font-size: 1.5rem;
+        --big-font-size: 1.2rem;
+        --small-font-size: 1rem;
+        --smaller-font-size: 0.8rem;
+    }
+}
+
+body {
+    background: var(--body-color);
+    font-family: "Poppins";
+}
+
+/* ==========================
+ Header
+========================== */
+
+.link-container ul li a.active {
+    background: var(--first-color);
+    color: var(--first-color-opposite) !important;
+}
+
+.link-container ul li a.active:hover {
+    background: var(--first-color-alt);
+}
+
+/* ==========================
+ Main
+========================== */
+
+/* ==========================
+ Footer
+========================== */
+
+.turbolinks-progress-bar {
+    height: 3px;
+    background-color: var(--bs-secondary);
+}
