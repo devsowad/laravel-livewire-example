@@ -24,6 +24,9 @@
         })
 
     </script>
+
+    @yield('extra-js')
+
 </head>
 
 <body>

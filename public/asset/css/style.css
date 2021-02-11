@@ -79,3 +79,15 @@ body {
     height: 3px;
     background-color: var(--bs-secondary);
 }
+
+#dropArea {
+    border: 2px solid var(--bs-white);
+}
+
+#dropArea.active {
+    border: 2px solid var(--bs-secondary);
+}
+
+#dropArea.active i {
+    color: var(--bs-secondary);
+}
