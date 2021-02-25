@@ -91,3 +91,17 @@ body {
 #dropArea.active i {
     color: var(--bs-secondary);
 }
+
+.drag-enter {
+    background: var(--bs-secondary);
+    color: #fff;
+}
+
+.drag-start {
+    background: #333;
+    color: #fff;
+}
+
+ul[drag-group] li {
+    transition: all 0.1 s ease-in-out !important;
+}

@@ -6,3 +6,5 @@ document.addEventListener("livewire:load", function (event) {
 });
 
 import "alpinejs";
+
+import "livewire-sortable";

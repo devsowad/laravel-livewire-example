@@ -12363,8 +12363,8 @@ i.flag-zw:before {
 .hover-shadow {
   -webkit-box-shadow: none;
   box-shadow: none;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
 }
 .card.hover-shadow:hover,
 .hover-shadow:hover {
