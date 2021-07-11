@@ -16,12 +16,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        SupportedTicket::factory(5)->create();
-
         User::create([
             'name'     => 'Livewire',
             'email'    => 'livewire@laravel.com',
             'password' => 'password',
+        ]);
+
+        SupportedTicket::create([
+            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing.',
+            'question' => 'Lorem ipsum dolor sit amet consectetur.',
         ]);
     }
 }
