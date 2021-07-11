@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Comment;
 use App\Models\SupportedTicket;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManagerStatic;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -19,11 +18,10 @@ class Comments extends Component
     public $image;
     public $ticketId;
 
-    protected $rules = ['comment' => 'required|max:25'];
+    protected $rules = ['comment' => 'required|max:25', 'image' => 'nullable|image|mimes:jpeg,jpg,png'];
 
     protected $listeners = [
-        'fileUpload' => 'handleFileUpload',
-        'ticketSelected'
+        'ticketSelected',
     ];
 
     public function __construct()
@@ -36,11 +34,6 @@ class Comments extends Component
         $this->ticketId = $ticketId;
     }
 
-    public function handleFileUpload($imageData)
-    {
-        $this->image = $imageData;
-    }
-
     public function updated($field)
     {
         $this->validateOnly($field);
@@ -49,29 +42,19 @@ class Comments extends Component
     public function addComment()
     {
         $this->validate();
-        $image = $this->storeImage();
+
+        $name = time() . '.' . $this->image->extension();
+        $this->image->storeAs('public', $name);
 
         Comment::create([
-            'body' => $this->comment,
-            'image' => $image,
-            'user_id' => 1,
+            'body'                => $this->comment,
+            'image'               => $name,
+            'user_id'             => auth()->id(),
             'supported_ticket_id' => $this->ticketId,
         ]);
 
-        $this->comment = '';
-        $this->image = '';
+        $this->reset(['comment', 'image']);
         session()->flash('successMsg', 'Comment added!');
-    }
-
-    public function storeImage()
-    {
-        if (!$this->image) return null;
-
-        $img = ImageManagerStatic::make($this->image)->encode('jpg')->resize(300, 200);
-        $name = time() . '.jpg';
-
-        Storage::disk('public')->put($name, $img);
-        return $name;
     }
 
     public function remove(Comment $comment)
@@ -83,8 +66,10 @@ class Comments extends Component
 
     public function render()
     {
+        $comments = Comment::where('supported_ticket_id', $this->ticketId)->latest()->paginate(2);
+
         return view('livewire.comments', [
-            'comments' => Comment::where('supported_ticket_id', $this->ticketId)->latest()->paginate(2)
+            'comments' => $comments,
         ]);
     }
 }
