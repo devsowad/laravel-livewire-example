@@ -23,8 +23,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         SupportedTicket::create([
-            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
             'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing.',
+        ]);
+        SupportedTicket::create([
+            'question' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+        ]);
+        SupportedTicket::create([
             'question' => 'Lorem ipsum dolor sit amet consectetur.',
         ]);
     }
