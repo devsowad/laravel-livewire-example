@@ -1,6 +1,6 @@
-<p align="center"><a href="http://laravel-livewire-example.herokuapp.com"><img width="70%" src="https://i.ibb.co/TBmjY65/screenshot2.png" alt="screenshot" border="0"></a></p>
+<p align="center"><a href="http://laravel-livewire-example.herokuapp.com" target="_blank"><img width="100%" src="https://i.ibb.co/TBmjY65/screenshot2.png" alt="screenshot" border="0"></a></p>
 
-### <a href="http://laravel-livewire-example.herokuapp.com">Live site</a>
+### <a href="http://laravel-livewire-example.herokuapp.com" target="_blank">Live site</a>
 
 ## An simple app with Laravel Livewire
 
