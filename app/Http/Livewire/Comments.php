@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\Http\Controllers\FileUploadController;
 use App\Models\Comment;
 use App\Models\SupportedTicket;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -41,14 +41,12 @@ class Comments extends Component
 
     public function addComment()
     {
-        $this->validate();
-
-        $name = time() . '.' . $this->image->extension();
-        $this->image->storeAs('public', $name);
+        $image = FileUploadController::upload($this->image, 'comments');
 
         Comment::create([
             'body'                => $this->comment,
-            'image'               => $name,
+            'image_url'           => $image->getUrl(),
+            'image_public_id'     => $image->getPublicId(),
             'user_id'             => auth()->id(),
             'supported_ticket_id' => $this->ticketId,
         ]);
@@ -59,7 +57,7 @@ class Comments extends Component
 
     public function remove(Comment $comment)
     {
-        Storage::delete('public/' . $comment->image);
+        FileUploadController::delete($comment->image_public_id);
         Comment::destroy($comment->id);
         session()->flash('successMsg', 'Comment deleted!');
     }

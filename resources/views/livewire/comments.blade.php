@@ -62,9 +62,9 @@
         <p class="text-gray mt-2">
           {{ $comment->body }}
         </p>
-        @if ($comment->image != '')
-          <img src="{{ asset('storage') . '/' . $comment->image }}" class="img-fluid" />
-        @endif
+
+          <img src="{{  $comment->image_url }}" class="img-fluid" />
+
       </div>
     </div>
   @endforeach
