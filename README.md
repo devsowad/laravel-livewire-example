@@ -2,7 +2,7 @@
 
 ### <a href="http://laravel-livewire-example.herokuapp.com" target="_blank">Live site</a>
 
-## An simple app with Laravel Livewire
+## A simple app with Laravel Livewire
 
 ### Run this project
 
